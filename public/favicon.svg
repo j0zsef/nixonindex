@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" fill="#f5f4ef"/>
+  <g transform="rotate(-6 50 50)">
+    <rect x="17" y="23" width="66" height="54" rx="6" fill="none" stroke="#c0272d" stroke-width="6"/>
+    <text x="50" y="52" fill="#c0272d" text-anchor="middle" dominant-baseline="central"
+          font-family="Archivo, 'Arial Black', Helvetica, sans-serif" font-weight="900"
+          font-size="44" letter-spacing="1">NI</text>
+  </g>
+</svg>
