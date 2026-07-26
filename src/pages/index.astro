@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Stamp from '../components/Stamp.astro';
+import { getCollection } from 'astro:content';
+import { totalNixons } from '../data/factors.js';
+
+const cases = (await getCollection('case-files')).sort(
+  (a, b) => b.data.ruled.valueOf() - a.data.ruled.valueOf()
+);
+const latest = cases[0];
+---
+
+<Base>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Definition of the unit</div>
+      <h2>1 Watergate = 100 Nixons.<br />Everything else is a fraction.</h2>
+      <p>
+        Every scandal is scored against one published, five-factor formula,
+        applied only to documented public records, for officials of every
+        party. You don't have to trust our politics. You can check our math.
+      </p>
+    </div>
+    <div class="hero-stamp">
+      <Stamp value={100} rotate={-7} />
+      <div class="mono-note ref-note">
+        REFERENCE ARTIFACT: WATERGATE (1972–74)
+      </div>
+    </div>
+  </section>
+
+  {
+    latest && (
+      <section class="card">
+        <div class="eyebrow">
+          Latest ruling — Case File {latest.data.caseNumber}
+        </div>
+        <div class="latest">
+          <div class="latest-copy">
+            <h3>{latest.data.title}</h3>
+            <p>{latest.data.summary}</p>
+            <a class="btn" href={`/cases/${latest.id}/`}>
+              READ THE MATH →
+            </a>
+          </div>
+          <Stamp value={totalNixons(latest.data.scores)} size="sm" rotate={5} />
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .hero-copy {
+    flex: 1 1 380px;
+  }
+  .hero-copy h2 {
+    font-weight: 800;
+    font-size: clamp(26px, 4vw, 38px);
+    margin: 0 0 16px;
+  }
+  .hero-stamp {
+    flex: 0 0 auto;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .ref-note {
+    margin-top: 14px;
+  }
+  .latest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .latest-copy {
+    flex: 1 1 320px;
+  }
+  .latest-copy h3 {
+    font-weight: 800;
+    font-size: 26px;
+    margin: 0 0 8px;
+  }
+  .latest-copy .btn {
+    margin-top: 16px;
+  }
+</style>

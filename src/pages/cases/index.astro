@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Stamp from '../../components/Stamp.astro';
+import { getCollection } from 'astro:content';
+import { totalNixons } from '../../data/factors.js';
+
+const cases = (await getCollection('case-files')).sort(
+  (a, b) => b.data.ruled.valueOf() - a.data.ruled.valueOf()
+);
+---
+
+<Base
+  title="Case Files — The Nixon Index"
+  description="Every ruling, with the math shown."
+>
+  <div class="eyebrow">All rulings</div>
+  <h2 class="page-title">Case Files</h2>
+  {
+    cases.map((c) => (
+      <a class="case-row" href={`/cases/${c.id}/`}>
+        <div>
+          <div class="mono-note">
+            CASE FILE {c.data.caseNumber} · RULED{' '}
+            {c.data.ruled.toLocaleDateString('en-US', {
+              month: 'long',
+              year: 'numeric',
+            }).toUpperCase()}
+          </div>
+          <h3>{c.data.title}</h3>
+          <p>{c.data.summary}</p>
+        </div>
+        <Stamp value={totalNixons(c.data.scores)} size="sm" rotate={4} />
+      </a>
+    ))
+  }
+</Base>
+
+<style>
+  .page-title {
+    font-weight: 800;
+    font-size: 34px;
+    margin: 0 0 24px;
+  }
+  .case-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .case-row h3 {
+    font-weight: 800;
+    font-size: 24px;
+    margin: 6px 0 8px;
+  }
+  .case-row p {
+    margin: 0;
+    color: var(--ink-soft);
+    max-width: 560px;
+  }
+  .case-row:hover h3 {
+    color: var(--federal-blue);
+  }
+</style>

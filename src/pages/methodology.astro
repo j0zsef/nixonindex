@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import { FACTORS } from '../data/factors.js';
+---
+
+<Base
+  title="Methodology — The Nixon Index"
+  description="The published five-factor formula behind every Nixon Index score. 0 to 100 Nixons, anchored to Watergate."
+>
+  <div class="eyebrow">Published methodology · v0.1</div>
+  <h2 class="page-title">The Formula</h2>
+  <p>
+    Each case is scored on five factors, 0–10, from documented public records:
+    disclosure filings, voting records, contracts, court documents, and
+    on-the-record statements. Factor scores are multiplied by fixed weights and
+    summed. Maximum score: 100 Nixons. Watergate, scored retroactively, defines
+    the ceiling.
+  </p>
+
+  <div class="formula-block">
+    NIXONS = (F1×3.0) + (F2×2.5) + (F3×2.0) + (F4×1.5) + (F5×1.0)
+  </div>
+
+  {
+    FACTORS.map((f) => (
+      <div class="factor-row">
+        <div class="factor-id">
+          {f.label}
+          <div class="factor-w">×{f.weight.toFixed(1)}</div>
+        </div>
+        <div>
+          <strong class="factor-name">{f.name}</strong>
+          <p class="factor-desc">{f.desc}</p>
+        </div>
+      </div>
+    ))
+  }
+
+  <blockquote>
+    <strong>Three commitments.</strong> The formula is public before any case is
+    scored. It applies to officials of every party. Every input cites a public
+    record. Disagree with a score? The inputs are all listed and open to dispute.
+  </blockquote>
+</Base>
+
+<style>
+  .page-title {
+    font-weight: 800;
+    font-size: 34px;
+    margin: 0 0 16px;
+  }
+  .formula-block {
+    margin: 20px 0 36px;
+  }
+  .factor-row {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .factor-id {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--stamp-red);
+    flex: 0 0 90px;
+  }
+  .factor-w {
+    color: var(--ink);
+  }
+  .factor-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+  }
+  .factor-desc {
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+  }
+  blockquote {
+    border-left: 5px solid var(--federal-blue);
+    margin: 36px 0 0;
+    padding-left: 20px;
+  }
+</style>

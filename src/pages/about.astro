@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About — The Nixon Index"
+  description="What The Nixon Index is, who keeps it, and the tradition it works in."
+>
+  <div class="eyebrow">Colophon</div>
+  <h2 class="page-title">About the Index</h2>
+
+  <p>
+    The Nixon Index scores public-corruption cases against one fixed formula,
+    published before any case is ruled. The standard unit is the Nixon. The
+    reference artifact is Watergate, scored retroactively at 100. Every input
+    cites a public record, and the arithmetic is shown on every ruling. The
+    scores are opinions derived from that method; the records they rest on are
+    listed so anyone can check them.
+  </p>
+
+  <p>
+    The Index takes no party. A ruling that spares one side and a ruling that
+    indicts it are produced by the same five factors and the same weights. The
+    method is the argument.
+  </p>
+
+  <div class="dedication">
+    <p class="dedication-lead">Dedicated to</p>
+    <p class="dedication-names">
+      Howard Zinn,<br />
+      Bob Woodward &amp; Carl Bernstein
+    </p>
+    <p class="dedication-note">
+      who held that the record, set down plainly and in full, is enough.
+    </p>
+  </div>
+
+  <p class="credit mono-note">
+    Kept by the Bureau of Corruption Metrology ·
+    <a href="https://x.com/nixonindex" target="_blank" rel="noopener">x.com/nixonindex</a>
+  </p>
+</Base>
+
+<style>
+  .page-title {
+    font-weight: 800;
+    font-size: 34px;
+    margin: 0 0 16px;
+  }
+  .dedication {
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    margin: 40px 0;
+    padding: 28px 0;
+    text-align: center;
+  }
+  .dedication-lead {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .dedication-names {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+  }
+  .dedication-note {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .credit {
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .credit a {
+    color: var(--stamp-red);
+  }
+</style>

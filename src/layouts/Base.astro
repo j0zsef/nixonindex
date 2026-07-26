@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+
+const { title = 'The Nixon Index', description = 'Corruption, measured. The standard unit is the Nixon. The reference artifact is Watergate.' } = Astro.props;
+const nav = [
+  { href: '/', label: 'THE INDEX' },
+  { href: '/methodology/', label: 'METHODOLOGY' },
+  { href: '/cases/', label: 'CASE FILES' },
+  { href: '/about/', label: 'ABOUT' },
+];
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-1Y3WGK02W4"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Y3WGK02W4');
+    </script>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        <div class="masthead-meta mono-note">
+          <span>Bureau of Corruption Metrology</span>
+          <span>Est. 2026</span>
+        </div>
+        <a href="/" class="masthead-title">The Nixon Index</a>
+        <p class="masthead-tagline">
+          Corruption, measured. The standard unit is the Nixon. The reference
+          artifact is Watergate.
+        </p>
+        <nav class="nav" aria-label="Primary">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  'nav-link',
+                  {
+                    active:
+                      item.href === '/'
+                        ? path === '/'
+                        : path.startsWith(item.href),
+                  },
+                ]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap main">
+      <slot />
+    </main>
+
+    <footer class="site-footer mono-note">
+      SCORES ARE OPINIONS DERIVED FROM THE PUBLISHED METHODOLOGY APPLIED TO
+      CITED PUBLIC RECORDS. THE NIXON INDEX IS NOT AFFILIATED WITH ANY PARTY,
+      CAMPAIGN, OR WATCH COMPANY.
+    </footer>
+  </body>
+</html>
+
+<style>
+  .masthead {
+    border-bottom: 3px double var(--ink);
+    padding-top: 28px;
+  }
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+  .masthead-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(40px, 8vw, 76px);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: block;
+    margin: 6px 0 2px;
+  }
+  .masthead-tagline {
+    font-style: italic;
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+  }
+  .nav-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 14px 4px;
+    margin-right: 28px;
+  }
+  .nav-link.active {
+    border-bottom: 4px solid var(--stamp-red);
+    font-weight: 700;
+  }
+  .main {
+    padding-top: 48px;
+    padding-bottom: 80px;
+  }
+  .site-footer {
+    border-top: 3px double var(--ink);
+    padding: 24px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+</style>

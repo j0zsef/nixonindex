@@ -1,0 +1,51 @@
+---
+const { factor, score } = Astro.props;
+---
+
+<div class="factor">
+  <div class="factor-head">
+    <span class="factor-name">
+      {factor.label} — {factor.name.toUpperCase()}
+      <span class="factor-weight">(×{factor.weight.toFixed(1)})</span>
+    </span>
+    <span class="factor-score">{score}/10</span>
+  </div>
+  <div class="track">
+    <div
+      class:list={['fill', { hot: score >= 8 }]}
+      style={`width: ${score * 10}%`}
+    >
+    </div>
+  </div>
+</div>
+
+<style>
+  .factor {
+    margin-bottom: 18px;
+  }
+  .factor-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  .factor-weight {
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .track {
+    height: 10px;
+    background: var(--track);
+    border: 1px solid var(--ink);
+  }
+  .fill {
+    height: 100%;
+    background: var(--federal-blue);
+  }
+  .fill.hot {
+    background: var(--stamp-red);
+  }
+</style>

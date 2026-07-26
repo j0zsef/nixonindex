@@ -1,0 +1,48 @@
+---
+const { value, label = 'NIXONS', size = 'lg', rotate = -6 } = Astro.props;
+---
+
+<div
+  class:list={['stamp', size]}
+  style={`transform: rotate(${rotate}deg)`}
+  aria-label={`${value} ${label}`}
+>
+  <div class="stamp-num">{value}</div>
+  <div class="stamp-label">{label}</div>
+</div>
+
+<style>
+  .stamp {
+    display: inline-block;
+    border: 5px solid var(--stamp-red);
+    border-radius: 6px;
+    color: var(--stamp-red);
+    text-align: center;
+    font-family: var(--font-mono);
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+    padding: 18px 30px;
+  }
+  .stamp.sm {
+    border-width: 4px;
+    padding: 10px 18px;
+  }
+  .stamp-num {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+  .sm .stamp-num {
+    font-size: 34px;
+  }
+  .stamp-label {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-top: 4px;
+  }
+  .sm .stamp-label {
+    font-size: 11px;
+  }
+</style>

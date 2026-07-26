@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Gelasio:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --paper: #f5f4ef;
+  --paper-raised: #fbfaf6;
+  --ink: #1b1d20;
+  --ink-soft: #3d3f43;
+  --muted: #6b6b63;
+  --rule: #c9c4b4;
+  --federal-blue: #23486b;
+  --stamp-red: #c0272d;
+  --folder-tan: #d9cdb2;
+  --track: #e4e0d4;
+
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Gelasio', Georgia, serif;
+  --font-mono: 'Courier Prime', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+}
+
+a {
+  color: var(--federal-blue);
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--federal-blue);
+  margin-bottom: 12px;
+}
+
+.mono-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.formula-block {
+  font-family: var(--font-mono);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 16px 20px;
+  font-size: 15px;
+  overflow-x: auto;
+}
+
+.receipt {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background: var(--paper-raised);
+  border: 1px dashed var(--ink);
+  padding: 14px 18px;
+}
+
+.card {
+  border: 2px solid var(--ink);
+  background: var(--paper-raised);
+  padding: 28px;
+  box-shadow: 6px 6px 0 var(--folder-tan);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px 18px;
+  background: var(--federal-blue);
+  color: var(--paper);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:focus-visible,
+.nav a:focus-visible {
+  outline: 3px solid var(--federal-blue);
+  outline-offset: 2px;
+}
+
+/* Case-file article prose */
+.prose h2 {
+  font-size: 24px;
+  margin-top: 40px;
+}
+
+.prose blockquote {
+  border-left: 5px solid var(--federal-blue);
+  margin: 24px 0;
+  padding-left: 20px;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
