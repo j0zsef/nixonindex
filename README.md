@@ -10,18 +10,9 @@ npm run dev      # local dev at localhost:4321
 npm run build    # static output to dist/
 ```
 
-## Deploy (Netlify)
-
-1. Push this repo to GitHub.
-2. Netlify → Add new site → Import from GitHub → pick this repo.
-3. Netlify auto-detects Astro. Build command `npm run build`, publish dir `dist`. Accept defaults.
-4. Buy `nixonindex.com` in Netlify → Domain management. DNS + SSL are automatic.
-
 ## Publishing a new case file
 
-Add one markdown file to `src/content/case-files/`. That's the whole
-workflow — no code changes. Frontmatter schema (validated at build time by
-`src/content.config.ts`):
+Add one markdown file to `src/content/case-files/`.
 
 ```yaml
 caseNumber: "002"
