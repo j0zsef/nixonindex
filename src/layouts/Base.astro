@@ -23,6 +23,12 @@ const path = Astro.url.pathname;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="canonical" href={new URL(path, Astro.site)} />
+    <script is:inline>
+      // Runs before first paint so the theme never flashes.
+      document.documentElement.dataset.theme =
+        localStorage.getItem('ni-theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    </script>
     <!-- Google tag (gtag.js) -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-1Y3WGK02W4"></script>
     <script is:inline>
@@ -38,6 +44,8 @@ const path = Astro.url.pathname;
         <div class="masthead-meta mono-note">
           <span>Bureau of Corruption Metrology</span>
           <span>Est. 2026</span>
+          <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+          ></button>
         </div>
         <a href="/" class="masthead-title">The Nixon Index</a>
         <p class="masthead-tagline">
@@ -76,6 +84,15 @@ const path = Astro.url.pathname;
       CITED PUBLIC RECORDS. THE NIXON INDEX IS NOT AFFILIATED WITH ANY PARTY,
       CAMPAIGN, OR WATCH COMPANY.
     </footer>
+
+    <script is:inline>
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const next =
+          document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('ni-theme', next);
+      });
+    </script>
   </body>
 </html>
 
@@ -87,7 +104,29 @@ const path = Astro.url.pathname;
   .masthead-meta {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     text-transform: uppercase;
+  }
+  #theme-toggle {
+    font: inherit;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  /* Label set in CSS, not JS, so it is correct on the first paint too. */
+  #theme-toggle::after {
+    content: 'Dark';
+  }
+  :global(:root[data-theme='dark']) #theme-toggle::after {
+    content: 'Light';
+  }
+  #theme-toggle:focus-visible {
+    outline: 3px solid var(--federal-blue);
+    outline-offset: 2px;
   }
   .masthead-title {
     font-family: var(--font-display);

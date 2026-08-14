@@ -17,6 +17,24 @@
   --font-mono: 'Courier Prime', monospace;
 }
 
+/* Dark mode. The inline script in Base.astro always stamps data-theme on
+   <html> before first paint, resolving localStorage first and the OS
+   setting second, so only the one explicit selector is needed here. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #14161a;
+  --paper-raised: #1b1e23;
+  --ink: #e8e5dc;
+  --ink-soft: #c3bfb4;
+  --muted: #8f8b80;
+  --rule: #3a3d43;
+  --federal-blue: #7aa7d4;
+  --stamp-red: #e05a5f;
+  --folder-tan: #4a4234;
+  --track: #2a2d33;
+}
+
 * {
   box-sizing: border-box;
 }

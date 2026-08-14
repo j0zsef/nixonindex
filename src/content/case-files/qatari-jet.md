@@ -3,7 +3,7 @@ caseNumber: "001"
 title: "How many Nixons is the Qatari Air Force One?"
 subject: "The Qatari Jet"
 ruled: 2026-07-18
-summary: "A $400M Boeing 747-8, gifted by a foreign government, now flying as Air Force One. We ran the formula."
+summary: "A $400M Boeing 747-8, gifted by a foreign government, now flying as Air Force One."
 scores:
   f1: 9
   f2: 6
