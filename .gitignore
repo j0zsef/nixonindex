@@ -148,3 +148,9 @@ vite.config.ts.timestamp-*
 
 # JetBrains IDE
 .idea/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+.playwright/

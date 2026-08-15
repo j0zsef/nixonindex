@@ -111,13 +111,13 @@ floor.
 
 ## The receipt
 
-(9×3.0) + (6×2.5) + (9×2.0) + (7×1.5) + (2×1.0) = **72 Nixons**
+(9×3.0) + (6×2.5) + (9×2.0) + (7×1.5) + (2×1.0) = **73 Nixons**
 
 ## Why not higher?
 
 Factor F5. Nothing here was hidden. Watergate maxed F5 because the
-cover-up was the crime. A 72 with everything in the open is a different
-kind of finding than a 72 built on concealment, and the factor
+cover-up was the crime. A 73 with everything in the open is a different
+kind of finding than a 73 built on concealment, and the factor
 breakdown preserves that difference. The Index measures conduct, not
 volume.
 
